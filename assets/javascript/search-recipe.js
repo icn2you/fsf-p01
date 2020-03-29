@@ -2,7 +2,7 @@
 const apiKey = RECIPES_API_KEY;
 const recipeURL = 'https://api.spoonacular.com/recipes/';
 const diet = 'vegetarian';
-const number = 2;
+const number = 5;
 const apiImagePath = 'https://spoonacular.com/recipeImages/';
 
 // ********** QueryURLs **********
@@ -40,19 +40,23 @@ $.ajax({
   console.log(results);
 
   results.forEach(function(result) {
-    recipeIDs.push(result.id);
 
-    const tr = $(`<tr id=${result.id}>`);
-    const idTd = $('<td>').text(result.id);
-    const titleTd = $('<td>').text(result.title);
-    const imgEl = $('<img>').attr('src', `${apiImagePath}${result.image}`);
-    imgEl.attr('height', '200px');
-    const imgTd = $('<td>').append(imgEl);
-    const servingTd = $('<td>').text(result.servings);
-    const minitesTd = $('<td>').text(result.readyInMinutes);
+    // Render only recipes whose cooking time is equal to or less than 30 mins
+    if (result.readyInMinutes <= 30) {
+      recipeIDs.push(result.id);
 
-    tr.append(idTd, titleTd, imgTd, servingTd, minitesTd);
-    $('#ingredients .result tbody').append(tr);
+      const tr = $(`<tr id=${result.id}>`);
+      const idTd = $('<td>').text(result.id);
+      const titleTd = $('<td>').text(result.title);
+      const imgEl = $('<img>').attr('src', `${apiImagePath}${result.image}`);
+      imgEl.attr('height', '200px');
+      const imgTd = $('<td>').append(imgEl);
+      const servingTd = $('<td>').text(result.servings);
+      const minitesTd = $('<td>').text(result.readyInMinutes);
+
+      tr.append(idTd, titleTd, imgTd, servingTd, minitesTd);
+      $('#ingredients .result tbody').append(tr);
+    }
 
   });
 });
