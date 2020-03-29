@@ -1,10 +1,64 @@
+// ********** Variables for QueryURLs **********
 const apiKey = RECIPES_API_KEY;
 const recipeURL = 'https://api.spoonacular.com/recipes/';
+const diet = 'vegetarian';
+const number = 2;
+const apiImagePath = 'https://spoonacular.com/recipeImages/';
 
-const queryUrlByIng = `${recipeURL}findByIngredients?apiKey=${apiKey}&ingredients=apples,+flour,+sugar&diet=vegan&number=2`;
+// ********** QueryURLs **********
+// Search by Diet and instructionsRequired => id, image, imageUrls, readyInMinutes, servings, title
+// https://spoonacular.com/food-api/docs#Search-Recipes
+const queryUrlRecipes = `${recipeURL}search?apiKey=${apiKey}&diet=${diet}&instructionsRequired=true&number=${number}`;
+
+// Search by Ingredients
+// https://spoonacular.com/food-api/docs#Search-Recipes-by-Ingredients
+const queryUrlByIng = `${recipeURL}findByIngredients?apiKey=${apiKey}&ingredients=apples,+flour,+sugar&number=${number}`;
+
 
 const recipeIDs = [];
 
+// https://spoonacular.com/food-api/docs#Diets
+const dietTypes = [
+  'glutenFree',
+  'ketogenic',
+  'vegan',
+  'vegetarian',
+  'Lacto-Vegetarian',
+  'Ovo-Vegetarian',
+  'pescetarian',
+  'paleo',
+  'primal',
+  'whole30', // doesn't exist?
+];
+
+$.ajax({
+  url: queryUrlRecipes,
+  method: 'GET'
+}).then(function (response) {
+  console.log('ajax1!!!!');
+  const results = response.results;
+  console.log(results);
+
+  results.forEach(function(result) {
+    recipeIDs.push(result.id);
+
+    const tr = $(`<tr id=${result.id}>`);
+    const idTd = $('<td>').text(result.id);
+    const titleTd = $('<td>').text(result.title);
+    const imgEl = $('<img>').attr('src', `${apiImagePath}${result.image}`);
+    imgEl.attr('height', '200px');
+    const imgTd = $('<td>').append(imgEl);
+    const servingTd = $('<td>').text(result.servings);
+    const minitesTd = $('<td>').text(result.readyInMinutes);
+
+    tr.append(idTd, titleTd, imgTd, servingTd, minitesTd);
+    $('#ingredients .result tbody').append(tr);
+
+  });
+});
+
+
+/*
 $.ajax({
   url: queryUrlByIng,
   method: 'GET'
@@ -28,36 +82,21 @@ $.ajax({
   console.log(recipeIDs);
 
   recipeIDs.forEach(function(id) {
-    console.log('test');
-    const queryURL = `${recipeURL}${id}/information?apiKey=${apiKey}&includeNutrition=false`;
+    const queryURLRecipeInfo = `${recipeURL}${id}/information?apiKey=${apiKey}&includeNutrition=false`;
     console.log('query: ' + queryURL);
 
     $.ajax({
-      url: queryURL,
+      url: queryURLRecipeInfo,
       method: 'GET'
     }).then(function (response) {
       console.log('ajax2!!!!');
       console.log(response);
 
       const servingTd = $('<td>').text(response.servings);
-      $(`#${id}`).append(servingTd);
+      const minitesTd = $('<td>').text(response.readyInMinutes);
+      $(`#${id}`).append(servingTd, minitesTd);
     });
   });
 });
+*/
 
-
-// recipeIDs.forEach(function(id) {
-//   console.log('test');
-//   const queryURL = `${recipeURL}${id}/information?apiKey=${apiKey}includeNutrition=false`;
-//   console.log('query: ' + queryURL);
-//
-//   $.ajax({
-//     url: queryURL,
-//     method: 'GET'
-//   }).then(function (response) {
-//     console.log('response2: ' + response);
-//
-//     const servingTd = $('<td>').text(response.servings);
-//     $(`#${id}`).append(servingTd);
-//   });
-// });
