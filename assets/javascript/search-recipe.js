@@ -2,6 +2,7 @@
 const apiKey = RECIPES_API_KEY;
 const recipeURL = 'https://api.spoonacular.com/recipes/';
 const diet = 'vegetarian';
+const ingredients = 'apples,flour,sugar';
 const number = 5;
 const apiImagePath = 'https://spoonacular.com/recipeImages/';
 
@@ -12,7 +13,7 @@ const queryUrlRecipes = `${recipeURL}search?apiKey=${apiKey}&diet=${diet}&instru
 
 // Search by Ingredients
 // https://spoonacular.com/food-api/docs#Search-Recipes-by-Ingredients
-const queryUrlByIng = `${recipeURL}findByIngredients?apiKey=${apiKey}&ingredients=apples,+flour,+sugar&number=${number}`;
+const queryUrlByIng = `${recipeURL}findByIngredients?apiKey=${apiKey}&ingredients=${ingredients}&number=${number}`;
 
 
 const recipeIDs = [];
@@ -57,6 +58,14 @@ $.ajax({
       tr.append(idTd, titleTd, imgTd, servingTd, minitesTd);
       $('#ingredients .result tbody').append(tr);
     }
+
+  });
+
+
+  $.ajax({
+    url: queryUrlByIng,
+    method: 'GET'
+  }).then(function (response) {
 
   });
 });
