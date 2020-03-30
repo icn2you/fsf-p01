@@ -11,21 +11,15 @@
         <meta name="description" content="Full Stack Flex Bootcamp Project 1">
 
         <!-- Favicon -->
-        <link rel="shortcut icon" href="assets/images/gif.png">
+        <!--<link rel="shortcut icon" href="assets/images/gif.png">-->
 
         <!-- Google Icon Font -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         
         <!-- Materialize -->
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <!-- Site-specific Styles -->
         <link rel="stylesheet" href="assets/css/style.css">
-
-        <!-- Temporary Styles -->
-        <style>
-          .debug-border-red { border: 1px solid red !important; }
-          .card-panel { margin-left: 10%; } 
-        </style>
 
         <title>Simple & Delicious</title>
     </head>
@@ -37,7 +31,7 @@
             <div class="navbar-fixed">
                 <nav>
                     <div class="nav-wrapper">
-                        <a href="#!" class="brand-logo">&nbsp;Simple & Delicious</a>
+                        <a href="#!" class="brand-logo">&nbsp;CookQuik</a>
                     </div>
                 </nav>
             </div>
@@ -47,101 +41,57 @@
         <main class="container">
             <div class="divider"></div>
             <div class="section">
-                <h5>Your Diet Type and/or Dietary Restrictions</h5>
-                <form action="#">
-                    <div class="row">
-                        <div class="col s4">
-                            <label>
-                                <input type="checkbox" />
-                                <span>Gluten Free</span>
-                            </label>
-                        </div>
-                        <div class="col s4">
-                            <label>
-                                <input type="checkbox" />
-                                <span>Ketogenic</span>
-                            </label>
-                        </div>
-                        <div class="col s4">
-                            <label>
-                                <input type="checkbox" />
-                                <span>Paleo</span>
-                            </label>
-                      </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s4">
-                            <label>
-                                <input type="checkbox" />
-                                <span>Vegetarian</span>
-                            </label>
-                        </div>
-                        <div class="col s4">
-                            <label>
-                              <input type="checkbox" />
-                                <span>Lacto-vegetarian</span>
-                            </label>
-                        </div>
-                        <div class="col s4">
-                            <label>
-                                <input type="checkbox" />
-                                <span>Ovo-vegetarian</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s4">
-                            <label>
-                                <input type="checkbox" />
-                                <span>Vegan</span>
-                            </label>
-                        </div>
-                        <div class="col s4">
-                            <label>
-                                <input type="checkbox" />
-                                <span>Primal</span>
-                            </label>
-                        </div>
-                        <div class="col s4">
-                            <label>
-                                <input type="checkbox" />
-                                <span>Whole30</span>
-                            </label>
-                        </div>
-                    </div>
-                </form>
-            </div>                
+                <div id="mission" class="center-align">
+                    <em>Simple and delicious recipes for the modern busy household</em>
+                </div>
             </div>
             <div class="divider"></div>
             <div class="section">
-                <h5>Ingredients You Wish to Use</h5>
+                <h5>Special Diets &amp; Food Allergies</h5>
+                <div class="row">
+                    <div class="col s6">
+                        <div class="row">
+                            <div class="col s6">
+                                <div class="input-field">
+                                    <select id="special-diets">
+                                        <option value="" disabled selected>Choose your option</option>
+                                    </select>
+                                    <label>Special Diets</label>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="col s6">
+                        <div class="row">
+                            <form id="food-allergies" action="#">
+                            </form>
+                        </div>
+                    </div>
+                </div>               
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <h5>Ingredients to Include</h5>
                 <div class="row">
                     <div class="col s4">
                         <form>                        
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">local_dining</i>
-                                <input id="ingredients" type="text" class="validate">
+                                <input id="search-ingredient" type="text" autocomplete="off">
                                 <label for="ingredients">Ingredients</label>
-                                <span class="helper-text" data-error="wrong" data-success="right">Enter each ingredient separately.</span>
+                                <span class="helper-text">Enter each ingredient separately.</span>
                                 <div>&nbsp;</div>
                                 <div class="center-align">
-                                    <a class="waves-effect waves-light btn-small"><i class="material-icons left">add</i>Ingredient</a>
+                                    <a id="add-ingredient" class="waves-effect waves-light btn-small"><i class="material-icons left">add</i>Ingredient</a>
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="col m7 right">
                         <div class="card-panel teal lighten-1">
-                            <div class="card-title white-text">Ingredients</div>
+                            <div class="card-title white-text">INGREDIENTS</div>
                             <div class="white-text">
-                                <ul>
-                                    <li>Lorem</li>
-                                    <li>Ipsum</li>
-                                    <li>Dolor</li>
-                                    <li>Sit</li>
-                                    <li>Amet</li>
-                                    <li>Consectetur</li>
-                                </ul>
+                                <ul id="search-ingredients"></ul>
                             </div>
                         </div>
                     </div>
@@ -151,10 +101,12 @@
             <div class="section">
                 <h5>Recipes to Browse</h5>
                 <div class="carousel carousel-slider">
+                    <!--
                     <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/800/400/food/1"></a>
                     <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/800/400/food/2"></a>
                     <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/800/400/food/3"></a>
                     <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/800/400/food/4"></a>
+                    -->
                 </div>
             </div>
         </main>
@@ -162,14 +114,14 @@
         <!-- Footer -->
         <footer></footer>
 
-         <!-- jQuery 3.4.1 -->
+         <!-- jQuery 3.4.1 (minimized) -->
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-       
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-        <!-- Compiled and minified JavaScript -->
+        <!-- Materialize 1.0.0 (minimized) -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+        <!-- Lodash 4.17.15 (minimized) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
         
         <!-- Recipes Script -->
         <script src="assets/javascript/recipes.js"></script>
