@@ -14,3 +14,11 @@ This CSS specifies the layout and styling for a recipe search app/site.
 .debug-border-grn { border: 1px solid green !important; }
 .debug-border-blu { border: 1px solid blue !important; }
 .debug-border-pur { border: 1px solid purple !important; }
+
+/******************************************************************************
+ List Elements
+*******************************************************************************/
+#search-ingredients > li {
+  display: inline-block;
+  margin: 0.25rem 0.5rem;
+}

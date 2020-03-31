@@ -11,7 +11,7 @@
         <meta name="description" content="Full Stack Flex Bootcamp Project 1">
 
         <!-- Favicon -->
-        <!--<link rel="shortcut icon" href="assets/images/gif.png">-->
+        <link rel="shortcut icon" href="src/images/pan.png">
 
         <!-- Google Icon Font -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -32,6 +32,13 @@
                 <nav>
                     <div class="nav-wrapper">
                         <a href="#!" class="brand-logo">&nbsp;CookQuik</a>
+                        <form>
+                            <div class="input-field right">
+                                <input id="search" type="search" required>
+                                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                <i class="material-icons">close</i>
+                            </div>
+                        </form>
                     </div>
                 </nav>
             </div>
@@ -87,6 +94,7 @@
                             </div>
                         </form>
                     </div>
+                    <!--
                     <div class="col m7 right">
                         <div class="card-panel teal lighten-1">
                             <div class="card-title white-text">INGREDIENTS</div>
@@ -95,7 +103,29 @@
                             </div>
                         </div>
                     </div>
+                    -->
+                    <div class="col s12 m7 right">
+                        <div class="card horizontal">
+                            <div class="card-image">
+                                <img src="https://lorempixel.com/100/190/food/6">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <ul id="search-ingredients"></ul>
+                                </div>
+                                <!--
+                                <div class="card-action">
+                                    <a href="#">Ingredients</a>
+                                </div>
+                                -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="divider"></div>
+            <div class="section center-align">
+                <a class="waves-effect waves-light btn-large"><i class="material-icons left">search</i>Search for Recipes</a>
             </div>
             <div class="divider"></div>
             <div class="section">
