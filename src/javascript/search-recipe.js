@@ -52,13 +52,12 @@ const recipeIDs = [];
 $.ajax({
   url: queryUrlRecipes,
   method: 'GET'
-}).then(function (response) {
-  console.log('ajax1!!!!');
+}).done(function (response) {
+  console.log('ajax1 | successful!!!!');
   const results = response.results;
   console.log(results);
 
   results.forEach(function(result) {
-
     // Render only recipes whose cooking time is equal to or less than 30 mins
     if (result.readyInMinutes <= 30) {
       recipeIDs.push(result.id);
@@ -70,13 +69,16 @@ $.ajax({
       imgEl.attr('height', '200px');
       const imgTd = $('<td>').append(imgEl);
       const servingTd = $('<td>').text(result.servings);
-      const minitesTd = $('<td>').text(result.readyInMinutes);
+      const minutesTd = $('<td>').text(result.readyInMinutes);
 
-      tr.append(idTd, titleTd, imgTd, servingTd, minitesTd);
+      tr.append(idTd, titleTd, imgTd, servingTd, minutesTd);
       $('#ingredients .result tbody').append(tr);
     }
+  })
 
-  });
+}).fail(function(jqXHR, textStatus, errorThrown) {
+  console.log(`ajax1 | ${textStatus.toUpperCase()}: ${errorThrown}`)
+});
 
 
   // $.ajax({
@@ -85,7 +87,7 @@ $.ajax({
   // }).then(function (response) {
   //
   // });
-});
+
 
 
 /*
