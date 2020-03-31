@@ -2,24 +2,13 @@
 const apiKey = RECIPES_API_KEY;
 const recipeURL = 'https://api.spoonacular.com/recipes/';
 const diet = 'vegetarian';
-const ingredients = 'apples,flour,sugar';
+const intolerances = 'peanut';
+const ingredients = 'apples,almond,sugar';
 const number = 5;
 const apiImagePath = 'https://spoonacular.com/recipeImages/';
 
-// ********** QueryURLs **********
-// Search by Diet and instructionsRequired => id, image, imageUrls, readyInMinutes, servings, title
-// https://spoonacular.com/food-api/docs#Search-Recipes
-const queryUrlRecipes = `${recipeURL}search?apiKey=${apiKey}&diet=${diet}&instructionsRequired=true&number=${number}`;
-
-// Search by Ingredients
-// https://spoonacular.com/food-api/docs#Search-Recipes-by-Ingredients
-const queryUrlByIng = `${recipeURL}findByIngredients?apiKey=${apiKey}&ingredients=${ingredients}&number=${number}`;
-
-
-const recipeIDs = [];
-
 // https://spoonacular.com/food-api/docs#Diets
-const dietTypes = [
+const dietTypesList = [
   'glutenFree',
   'ketogenic',
   'vegan',
@@ -31,6 +20,34 @@ const dietTypes = [
   'primal',
   'whole30', // doesn't exist?
 ];
+
+// https://spoonacular.com/food-api/docs#Intolerances
+const intolerancesList = [
+  'dairy',
+  'egg',
+  'gluten',
+  'grain',
+  'peanut',
+  'seafood',
+  'sesame',
+  'shellfish',
+  'soy',
+  'sulfite',
+  'tree nut',
+  'wheat'
+];
+
+// ********** QueryURLs **********
+// Search by Diet and instructionsRequired => id, image, imageUrls, readyInMinutes, servings, title
+// https://spoonacular.com/food-api/docs#Search-Recipes
+const queryUrlRecipes = `${recipeURL}search?apiKey=${apiKey}&diet=${diet}&intolerances=${intolerances}&instructionsRequired=true&number=${number}`;
+
+// Search by Ingredients
+// https://spoonacular.com/food-api/docs#Search-Recipes-by-Ingredients
+const queryUrlByIng = `${recipeURL}findByIngredients?apiKey=${apiKey}&ingredients=${ingredients}&number=${number}`;
+
+
+const recipeIDs = [];
 
 $.ajax({
   url: queryUrlRecipes,
@@ -62,12 +79,12 @@ $.ajax({
   });
 
 
-  $.ajax({
-    url: queryUrlByIng,
-    method: 'GET'
-  }).then(function (response) {
-
-  });
+  // $.ajax({
+  //   url: queryUrlByIng,
+  //   method: 'GET'
+  // }).then(function (response) {
+  //
+  // });
 });
 
 
