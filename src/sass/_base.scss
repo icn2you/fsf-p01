@@ -1,0 +1,41 @@
+// COLOR VARIABLES
+$color-white: #fff;
+$color-black: #101010;
+
+
+$box-shadow-sm: .2rem .2rem .5rem rgba($color-black,.2);
+$box-shadow-md: .2rem .2rem 1rem rgba($color-black,.2);
+$box-shadow-lg: .2rem .2rem 2rem rgba($color-black,.3);
+
+
+// RESPONSIVE BREAKPOINTS
+//$bp-largest: 75em;   // 1200px
+$bp-large: 62.5em;   // 1000px
+$bp-medium: 50em;    // 800px;
+$bp-small: 40em;    // 640px;
+$bp-smallest: 33.75em;    // 540px;
+
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;   // 10px/16px = 62.5% -> 1rem = 10px
+
+    @media only screen and (max-width: $bp-small) {
+        font-size: 50%; // 8px/16px = 50% -> 1rem = 8px
+    }
+}
+
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    position: relative;
+}
+
