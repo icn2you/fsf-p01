@@ -1,17 +1,19 @@
 // ********** Variables for QueryURLs **********
-const apiKey = MY_API_KEY;
-// const apiKey = SPOONACULAR_API_KEY;
-const recipeURL = 'https://api.spoonacular.com/recipes/';
+const recipeURL = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/';
 const recipeID = '663323';
 
 // ********** QueryURL **********
 // https://spoonacular.com/food-api/docs#Get-Recipe-Information
 // https://api.spoonacular.com/recipes/:id/information?apiKey=###&includeNutrition=false
-const queryURL = `${recipeURL}${recipeID}/information?apiKey=${apiKey}&includeNutrition=false`;
+const queryURL = `${recipeURL}${recipeID}/information`;
 
 $.ajax({
   url: queryURL,
-  method: 'GET'
+  method: 'GET',
+  headers: {
+    "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+    "x-rapidapi-key": SPOONACULAR_API_KEY
+  },
 }).then((response) => {
   console.log('ajax1 | successful!!!!');
   console.log(response);
