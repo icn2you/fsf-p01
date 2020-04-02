@@ -1,7 +1,7 @@
 // ********** Variables for QueryURLs **********
 const apiKey = MY_API_KEY;
 // const apiKey = SPOONACULAR_API_KEY;
-const recipeURL = 'https://api.spoonacular.com/recipes/';
+const recipeURL = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/';
 const diet = 'vegetarian';
 const intolerances = 'peanut';
 const ingredients = 'tomato,onion';
@@ -43,15 +43,20 @@ const intolerancesList = [
 // ********** QueryURL **********
 // https://spoonacular.com/food-api/docs#Search-Recipes-Complex
 // https://api.spoonacular.com/recipes/complexSearch?diet=vegetarian&intolerances=egg,gluten&includeIngredients=tomato,onion&instructionsRequired=true&addRecipeInformation=true&sort=<string>&number=100&limitLicense=true&apiKey=###
-const queryURL = `${recipeURL}complexSearch?apiKey=${apiKey}&diet=${diet}&intolerances=${intolerances}&includeIngredients=${ingredients}&instructionsRequired=true&addRecipeInformation=true&sort=${sort}&number=${number}&limitLicense=true`;
+const queryURL = `${recipeURL}complexSearch?diet=${diet}&intolerances=${intolerances}&includeIngredients=${ingredients}&instructionsRequired=true&addRecipeInformation=true&sort=${sort}&number=${number}&limitLicense=true`;
 
 const recipeIDs = [];
 
 $.ajax({
   url: queryURL,
-  method: 'GET'
+  method: 'GET',
+  headers: {
+    "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+    "x-rapidapi-key": SPOONACULAR_API_KEY
+  },
 }).then(function(response) {
   console.log('ajax1 | successful!!!!');
+  console.log(queryURL);
   const results = response.results;
   console.log(results);
 
