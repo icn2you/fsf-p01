@@ -1,7 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### Example user template
 
-# secret.js & node_modules
+# keys.js & node_modules
+./config
 ./config/keys.js
 
 ./node_modules
