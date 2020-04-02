@@ -6,6 +6,9 @@ Ver.:  0.1.0 20200329
        
 This JS script implements the functionality for a recipe search app/site.
 ******************************************************************************/
+import $ from 'jquery';
+import _ from 'lodash';
+import 'materialize-css';
 
 $(document).ready(() => {
   // diets & restrictions
