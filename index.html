@@ -1,22 +1,160 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--=============================== HEAD ===============================-->  
+    <head>
+        <!-- Meta Tags -->
+        <meta charset="UTF-8">
+        <!-- Let browser know website is optimized for mobile -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>      
+        <meta name="author" content="Yuko Uda, Brittany-Renee Davis & Christopher Zenner">
+        <meta name="description" content="Full Stack Flex Bootcamp Project 1">
 
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="src/images/pan.png">
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
+        <!-- Google Icon Font -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
+        <!-- Materialize -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <!-- Site-specific Styles -->
+        <link rel="stylesheet" href="src/css/style.css">
+
+        <title>Simple & Delicious</title>
+    </head>
+
+    <!--=============================== BODY ===============================-->    
+    <body>
+        <!-- Header -->
+        <header>
+            <div class="navbar-fixed">
+                <nav>
+                    <div class="nav-wrapper">
+                        <a href="#!" class="brand-logo">&nbsp;CookQuik</a>
+                        <form>
+                            <div class="input-field right">
+                                <input id="search" type="search" required>
+                                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                <i class="material-icons">close</i>
+                            </div>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Primary Content -->
+        <main class="container">
+            <div class="divider"></div>
+            <div class="section">
+                <div id="mission" class="center-align">
+                    <em>Simple and delicious recipes for the modern busy household</em>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <h5>Special Diets &amp; Food Allergies</h5>
+                <div class="row">
+                    <div class="col s6">
+                        <div class="row">
+                            <div class="col s6">
+                                <div class="input-field">
+                                    <select id="special-diets">
+                                        <option value="" disabled selected>Choose your option</option>
+                                    </select>
+                                    <label>Special Diets</label>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="col s6">
+                        <div class="row">
+                            <form id="food-allergies" action="#">
+                            </form>
+                        </div>
+                    </div>
+                </div>               
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <h5>Ingredients to Include</h5>
+                <div class="row">
+                    <div class="col s4">
+                        <form>                        
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">local_dining</i>
+                                <input id="search-ingredient" type="text" autocomplete="off">
+                                <label for="ingredients">Ingredients</label>
+                                <span class="helper-text">Enter each ingredient separately.</span>
+                                <div>&nbsp;</div>
+                                <div class="center-align">
+                                    <a id="add-ingredient" class="waves-effect waves-light btn-small"><i class="material-icons left">add</i>Ingredient</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--
+                    <div class="col m7 right">
+                        <div class="card-panel teal lighten-1">
+                            <div class="card-title white-text">INGREDIENTS</div>
+                            <div class="white-text">
+                                <ul id="search-ingredients"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                    <div class="col s12 m7 right">
+                        <div class="card horizontal">
+                            <div class="card-image">
+                                <img src="https://lorempixel.com/100/190/food/6">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <ul id="search-ingredients"></ul>
+                                </div>
+                                <!--
+                                <div class="card-action">
+                                    <a href="#">Ingredients</a>
+                                </div>
+                                -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="section center-align">
+                <a class="waves-effect waves-light btn-large"><i class="material-icons left">search</i>Search for Recipes</a>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <h5>Recipes to Browse</h5>
+                <div class="carousel carousel-slider">
+                    <!--
+                    <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/800/400/food/1"></a>
+                    <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/800/400/food/2"></a>
+                    <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/800/400/food/3"></a>
+                    <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/800/400/food/4"></a>
+                    -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer></footer>
+
+        <!-- jQuery 3.4.1 (minimized) -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+
+        <!-- Materialize 1.0.0 (minimized) -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+
+        <!-- Lodash 4.17.15 (minimized) -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script> -->
+        
+        <!-- Recipes Script -->
+        <script src="assets/javascript/bundle.js"></script>
+    </body>
+
 </html>
