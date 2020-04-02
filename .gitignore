@@ -1,6 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### Example user template
 
+# keys.js & node_modules
+./config
 ./config/keys.js
 
 ./node_modules
@@ -38,3 +40,4 @@ Temporary Items
 *.iml
 out
 gen
+node_modules
