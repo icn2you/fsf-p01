@@ -1,6 +1,4 @@
 // ********** Variables for QueryURLs **********
-const apiKey = MY_API_KEY;
-// const apiKey = SPOONACULAR_API_KEY;
 const recipeURL = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/';
 const diet = 'vegetarian';
 const intolerances = 'peanut';
@@ -56,7 +54,6 @@ $.ajax({
   },
 }).then(function(response) {
   console.log('ajax1 | successful!!!!');
-  console.log(queryURL);
   const results = response.results;
   console.log(results);
 
