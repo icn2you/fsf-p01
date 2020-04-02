@@ -2,7 +2,7 @@
 ### Example user template
 
 # secret.js & node_modules
-./config/secret.js
+./config/keys.js
 
 ./node_modules
 
