@@ -62,6 +62,6 @@ $(document).ready(() => {
   });
 
   // Initialize Materialize carousel and form select.
-  // $('.carousel').carousel();
+  $('.carousel').carousel();
   $('select').formSelect();
 });
