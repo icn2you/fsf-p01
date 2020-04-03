@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!--=============================== HEAD ===============================-->  
+    <head>
+        <!-- Meta Tags -->
+        <meta charset="UTF-8">
+        <!-- Let browser know website is optimized for mobile -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>      
+        <meta name="author" content="Yuko Uda, Brittany-Renee Davis & Christopher Zenner">
+        <meta name="description" content="Full Stack Flex Bootcamp Project 1">
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="src/images/pan.png">
+
+        <!-- Google Icon Font -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
+        <!-- Materialize -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <!-- Site-specific Styles -->
+        <link rel="stylesheet" href="src/css/style.css">
+
+        <title>Simple & Delicious</title>
+    </head>
+
+    <!--=============================== BODY ===============================-->    
+    <body>
+        <!-- Header -->
+        <header>
+            <div class="navbar-fixed">
+                <nav>
+                    <div class="nav-wrapper">
+                        <a href="#!" class="brand-logo">&nbsp;CookQuik</a>
+                        <form>
+                            <div class="input-field right">
+                                <input id="search" type="search" required>
+                                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                <i class="material-icons">close</i>
+                            </div>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Primary Content -->
+        <main class="container">
+            <div class="divider"></div>
+            <div class="section">
+                <div id="mission" class="center-align">
+                    <em>Simple and delicious recipes for the modern busy household</em>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <h5>Search Criteria</h5>
+                <div class="row">
+                    <div class="col s12">
+                        <h6 id="search-diet-types">Diet Types:</h6>
+                        <h6 id="search-food-allergies">Food Allergies:</h6>
+                        <h6 id="search-ingredients">Ingredients:</h6>
+                    </div>
+                </div>               
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <div class="col s12">
+                    <div class="card horizontal small">
+                        <div class="card-image">
+                            <img src="src/images/chicken-burrito.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5>Recipe Title</h6>
+                                <a class="waves-effect waves-light btn-small">Vegan</a>
+                                <div>
+                                    <p>&nbsp;</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis rerum velit obcaecati fugit veniam accusamus a voluptatem excepturi sed aperiam, qui adipisci laboriosam quis voluptatibus dignissimos quos officia necessitatibus cumque.</p>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <a><i class="material-icons left">block</i>gluten</a>
+                                <a>soy</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="section center-align">
+                <a class="waves-effect waves-light btn-large"><i class="material-icons left">menu_book</i>Show More Recipes</a>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer></footer>
+      
+        <!-- Recipes Script -->
+        <script src="assets/javascript/bundle.js"></script>
+    </body>
+
+</html>

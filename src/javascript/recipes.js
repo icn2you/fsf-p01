@@ -68,7 +68,7 @@ const createTopPage = () => {
   });
 
   // Initialize Materialize carousel and form select.
-  // $('.carousel').carousel();
+  $('.carousel').carousel();
   $('select').formSelect();
 };
 
