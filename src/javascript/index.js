@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import _ from 'lodash';
-import { buildUrlToRecipesPage, createTopPage } from './recipes';
+import { buildUrlToRecipesPage, createTopPage } from './landing-page';
 
 $(document).ready(() => {
   createTopPage();

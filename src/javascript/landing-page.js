@@ -1,7 +1,7 @@
 /******************************************************************************
 FSWD:  Yuko Uda, Brittany-Renee Davis & Christopher Zenner
 Date:  03/29/2020
-File:  recipes.js
+File:  landing-page.js
 Ver.:  0.1.0 20200329
        
 This JS script implements the functionality for a recipe search app/site.
