@@ -1,9 +1,9 @@
 import $ from 'jquery';
 
-import createLandingPage from './landing-page';
+import landingPage from './landing-page';
 
 let initFunctions = {
-  "landing-page": createLandingPage
+  "landing-page": landingPage
 };
 
 $(document).ready(() => {

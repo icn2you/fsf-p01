@@ -12,7 +12,7 @@ import 'materialize-css';
 
 const searchIngredients = [];
 
-const createTopPage = () => {
+const renderSearchRecipesForm = () => {
   // diets & restrictions
   const diets = ['Ketogenic', 'Lacto-vegetarian', 'Ovo-vegetarian', 'Paleo', 'Primal', 'Vegan', 'Vegetarian', 'Whole30'],
     allergies = ['dairy', 'egg', 'gluten', 'grain', 'peanut', 'seafood', 'sesame', 'shellfish', 'soy', 'sulfite', 'tree nut', 'wheat'];
@@ -68,13 +68,18 @@ const createTopPage = () => {
     addSearchIngredient();
   });
 
-  // Initialize Materialize carousel and form select.
-  $('.carousel').carousel();
+  // Initialize Materialize form select.
   $('select').formSelect();
 };
 
 
-const buildUrlToRecipesPage = () => {
+const renderCarousel = () => {
+  // Initialize Materialize carousel.
+  $('.carousel').carousel();
+};
+
+
+const buildUrlForRecipesPage = () => {
 
   const diet = $('#special-diets option:selected').val().trim();
 
@@ -98,17 +103,19 @@ const buildUrlToRecipesPage = () => {
   return recipesPageUrl;
 };
 
-const createLandingPage = () => {
-  console.log('createLandingPage!!!');
+const landingPage = () => {
+  console.log('landingPage!!!');
 
-  createTopPage();
+  renderSearchRecipesForm();
+
+  renderCarousel();
 
   $('#search-btn').on('click', () => {
-    // buildUrlToRecipesPage();
-    location.href = buildUrlToRecipesPage();
+    // buildUrlForRecipesPage();
+    location.href = buildUrlForRecipesPage();
   });
 };
 
-export default createLandingPage;
+export default landingPage;
 
-export { createTopPage };
+export { renderSearchRecipesForm };
