@@ -10,19 +10,20 @@ import $ from 'jquery';
 import _ from 'lodash';
 import 'materialize-css';
 
+const searchIngredients = [];
+
 const createTopPage = () => {
   // diets & restrictions
   const diets = ['Ketogenic', 'Lacto-vegetarian', 'Ovo-vegetarian', 'Paleo', 'Primal', 'Vegan', 'Vegetarian', 'Whole30'],
     allergies = ['dairy', 'egg', 'gluten', 'grain', 'peanut', 'seafood', 'sesame', 'shellfish', 'soy', 'sulfite', 'tree nut', 'wheat'];
 
   let dietOpts = '',
-    foodAllergies = '',
-    searchIngredients = [];
+    foodAllergies = '';
 
   function addSearchIngredient() {
     let ingredient = $('#search-ingredient').val().trim();
-    console.log('ingredient.length: ' + ingredient.length);
 
+    // if a user try to add an empty string, do nothing.
     if (ingredient.length <= 0) {
       return;
     }
@@ -76,43 +77,38 @@ const createTopPage = () => {
 const buildUrlToRecipesPage = () => {
 
   const diet = $('#special-diets option:selected').val().trim();
-  const ingredients = [];
-  $('#search-ingredients li').each((_, item) => {
-    ingredients.push($(item).text());
-  });
-  console.log(ingredients);
 
   const intolerances = [];
   $('#food-allergies input:checked').each((_, checkbox) => {
     intolerances.push($(checkbox).attr('name'));
   });
-  console.log(intolerances);
 
   const params = {
     diet: diet,
     intolerances: intolerances,
-    ingredients: ingredients
+    ingredients: searchIngredients
   };
-
-  console.log(params);
 
   console.log(JSON.stringify(params));
 
   const paramsBase64 = btoa(JSON.stringify(params));
 
   const recipesPageUrl = `recipes.html?params=${paramsBase64}`;
-  
-  console.log('recipesPageUrl: ' + recipesPageUrl);
+
   return recipesPageUrl;
 };
 
-// $('#search-btn').on('click', () => {
-//   // buildUrlToRecipesPage();
-//
-//   location.href = buildUrlToRecipesPage();
-// });
+const createLandingPage = () => {
+  console.log('createLandingPage!!!');
 
-export {
-  createTopPage,
-  buildUrlToRecipesPage
+  createTopPage();
+
+  $('#search-btn').on('click', () => {
+    // buildUrlToRecipesPage();
+    location.href = buildUrlToRecipesPage();
+  });
 };
+
+export default createLandingPage;
+
+export { createTopPage };

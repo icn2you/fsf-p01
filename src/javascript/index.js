@@ -1,12 +1,12 @@
 import $ from 'jquery';
-import _ from 'lodash';
-import { buildUrlToRecipesPage, createTopPage } from './landing-page';
+
+import createLandingPage from './landing-page';
+
+let initFunctions = {
+  "landing-page": createLandingPage
+};
 
 $(document).ready(() => {
-  createTopPage();
-
-  $('#search-btn').on('click', () => {
-    // buildUrlToRecipesPage();
-    location.href = buildUrlToRecipesPage();
-  });
+  const page = $('html').data('page');
+  initFunctions[page]();
 });
