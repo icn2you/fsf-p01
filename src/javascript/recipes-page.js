@@ -14,9 +14,8 @@ import { SPOONACULAR_API_KEY } from '../../config/keys';
 // EX_page) http://localhost:9000/recipes.html?params=eyJkaWV0IjoidmVnZXRhcmlhbiIsImludG9sZXJhbmNlcyI6WyJwZWFudXQiXSwiaW5ncmVkaWVudHMiOlsidG9tYXRvIiwib25pb24iXX0=
 
 const queryString = require('query-string');
-const separator = ',';
 
-const renderRecipesPage = () => {
+const renderRecipesList = () => {
   const queryURL = buildRecipesQueryURL();
   console.log(queryURL);
   const recipeIDs = [];
@@ -40,24 +39,15 @@ const renderRecipesPage = () => {
 };
 
 const buildRecipesQueryURL = () => {
-  console.log(location.search);
-  const parsed = queryString.parse(location.search);
-  console.log(parsed);
-  const searchObj = JSON.parse(atob(parsed.params));
+  const searchObj = createSearchObj();
   console.log(searchObj);
-
-  // searchObj = {
-  //   diet: diet,
-  //   intolerances: intolerances,
-  //   ingredients: searchIngredients
-  // };
 
   const recipeURL = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/';
   const diet = searchObj.diet;
   console.log('diet: ' + diet);
-  const intolerances = _.join(searchObj.intolerances, separator);
+  const intolerances = _.join(searchObj.intolerances, ',');
   console.log('intolerances: ' + intolerances);
-  const ingredients = _.join(searchObj.ingredients, separator);
+  const ingredients = _.join(searchObj.ingredients, ',');
   console.log('ingredients: ' + ingredients);
   const number = 50;
 // https://spoonacular.com/food-api/docs#Recipe-Sorting-Options
@@ -68,9 +58,31 @@ const buildRecipesQueryURL = () => {
   return queryURL;
 };
 
+const renderSearchCriteria = () => {
+  const searchObj = createSearchObj();
+
+  $('#search-diet-types span').text(searchObj.diet);
+  $('#search-food-allergies span').text(_.join(searchObj.intolerances, ', '));
+  $('#search-ingredients span').text(_.join(searchObj.ingredients, ', '));
+};
+
+const createSearchObj = () => {
+  console.log(location.search);
+  const parsed = queryString.parse(location.search);
+  console.log(parsed);
+  return JSON.parse(atob(parsed.params));
+
+  // searchObj = {
+  //   diet: diet,
+  //   intolerances: intolerances,
+  //   ingredients: searchIngredients
+  // };
+};
+
 const recipesPage = () => {
   console.log('recipes page!!');
-  renderRecipesPage();
+  renderSearchCriteria();
+  renderRecipesList();
 };
 
 export default recipesPage;
