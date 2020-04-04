@@ -1,0 +1,36 @@
+@import "../mixins";
+
+#random-recipes {
+    a {
+        color: $color-white;
+        text-shadow: $box-shadow-md;
+    }
+    .cooking-time {
+        padding: .5rem .8rem;
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        z-index: 10;
+        display: inline-block;
+        color: $color-white;
+        background: $color-primary;
+        border-radius: 3px;
+        line-height: 1;
+        font-size: 1.2rem;
+    }
+
+    .random-recipes__title {
+        width: 80%;
+        text-align: center;
+        margin-top: -3rem;
+        @include absCenter();
+    }
+
+    .random-recipes__btn {
+        text-align: center;
+        position: absolute;
+        bottom: 4rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
