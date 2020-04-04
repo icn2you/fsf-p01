@@ -1,0 +1,28 @@
+/******************************************************************************
+FSWD:  Yuko Uda, Brittany-Renee Davis & Christopher Zenner
+Date:  04/03/2020
+File:  _.recipe.scss
+Ver.:  0.1.0 20200403
+
+This CSS specifies the layout and styling for the recipe detail page.
+*******************************************************************************/
+
+/* Debug */
+.debug-border-red { border: 1px solid red !important; }
+.debug-border-org { border: 1px solid orange !important; }
+.debug-border-ylw { border: 1px solid yellow !important; }
+.debug-border-grn { border: 1px solid green !important; }
+.debug-border-blu { border: 1px solid blue !important; }
+.debug-border-pur { border: 1px solid purple !important; }
+
+/******************************************************************************
+ Primary Content Elements (Main)
+*******************************************************************************/
+#recipe-title {
+  border: 1px solid orange;
+}
+
+#recipe-img {
+  border: 1px solid red !important;
+  max-width: 400px;
+}
