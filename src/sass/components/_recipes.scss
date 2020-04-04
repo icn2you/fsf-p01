@@ -1,0 +1,83 @@
+#search-criteria {
+    h6 span {
+        display: inline-block;
+        margin-left: .5rem;
+        text-transform: capitalize;
+    }
+}
+
+#recipes-list {
+    .img-container {
+        width: 40%;
+        position: relative;
+        overflow: hidden;
+
+        img {
+            width: auto;
+            border-radius: 2px 0 0 2px;
+            height: 100%;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            position: absolute;
+            z-index: 1;
+        }
+
+        .cooking-time {
+            padding: .3rem .5rem;
+            position: absolute;
+            top: .5rem;
+            left: .5rem;
+            z-index: 10;
+            display: inline-block;
+            color: $color-white;
+            background: $color-secondary;
+            border-radius: 3px;
+            line-height: 1;
+        }
+    }
+
+    .recipe-title {
+        margin: 0 0 .5rem;
+
+        a {
+            color: $color-black;
+            text-decoration: underline;
+        }
+
+        a:hover,
+        a:focus {
+            color: $color-grey;
+        }
+    }
+
+    .diet-types-container {
+        span {
+            margin-bottom: .5rem;
+            padding: .5rem;
+            font-size: .8rem;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+            height: 1.6rem;
+
+            &:not(:last-child) {
+                margin-right: .5rem;
+            }
+        }
+    }
+
+    .summary {
+        height: 8rem;
+        overflow-y: scroll;
+
+        @media only screen and (max-width: $bp-small) {
+            height: 4.5rem;
+        }
+    }
+
+    .health-score {
+        color: $color-tertiary;
+        font-weight: bold;
+    }
+}

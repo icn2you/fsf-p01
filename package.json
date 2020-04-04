@@ -36,6 +36,7 @@
   "dependencies": {
     "jquery": "^3.4.1",
     "lodash": "^4.17.15",
-    "materialize-css": "^1.0.0-rc.2"
+    "materialize-css": "^1.0.0-rc.2",
+    "query-string": "^6.11.1"
   }
 }

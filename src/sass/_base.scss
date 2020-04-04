@@ -4,15 +4,22 @@ $color-secondary: #26a69a;
 $color-tertiary: #ffab40;
 $color-white: #fff;
 $color-black: #101010;
+$color-grey: #4c4c4c;
+
+
 $box-shadow-sm: .2rem .2rem .5rem rgba($color-black,.2);
 $box-shadow-md: .2rem .2rem 1rem rgba($color-black,.2);
 $box-shadow-lg: .2rem .2rem 2rem rgba($color-black,.3);
+
+
 // RESPONSIVE BREAKPOINTS
 //$bp-largest: 75em;   // 1200px
 $bp-large: 62.5em;   // 1000px
 $bp-medium: 50em;    // 800px;
 $bp-small: 40em;    // 640px;
 $bp-smallest: 33.75em;    // 540px;
+
+
 //*,
 //*::before,
 //*::after {
@@ -35,3 +42,4 @@ $bp-smallest: 33.75em;    // 540px;
 //    line-height: 1.6;
 //    position: relative;
 //}
+
