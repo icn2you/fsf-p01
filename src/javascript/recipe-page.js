@@ -39,18 +39,29 @@ const recipePage = () => {
     console.log(response);
 
     cachedIngredients = response.extendedIngredients;
-    cachedServingSize = response.servings;
+    cachedServingSize = _.parseInt(response.servings);
 
     // unused recipe elements
     // _.forEach(response.diets, diet => {
     //   dietOpts += `<option value="${_.toLower(val)}">${val}</option>`;
     // });
+
+    // Dynamically create options for serving size & 
+    // initialize Material form `select` element.
+    let opts = '';
     
+    for (let i = 1; i < 21; i++) {
+      opts += `<option value="${i}">${i}</option>`;
+    }
+
+    $("#recipe-servings").append(opts);
+    $('select').formSelect();
+
     $('#recipe-title').text(response.title); // recipe title
     $('#recipe-time').append(`${response.readyInMinutes} min.`); // recipe prep time
     $('#recipe-img').attr('src', response.image); // recipe image
     $('#recipe-servings > option[value="choose"]').attr({ 'selected': false });
-    $(`#recipe-servings > option[value="${response.servings}"]`).attr({ 
+    $(`#recipe-servings > option[value="${response.servings}"]`).attr({ // recipe servings
       'disabled' : true,
       'selected' : true 
     });
@@ -62,10 +73,10 @@ const recipePage = () => {
         ${ingredient.name}</li>`;
     });
 
-    $('#recipe-ingredients').html(ingredients);
-    $('#recipe-summary').html(response.summary)
+    $('#recipe-ingredients').html(ingredients); // recipe ingredients
+    $('#recipe-summary').html(response.summary) // recipe summary
 
-    $('#recipe-instructions').html(response.instructions);
+    $('#recipe-instructions').html(response.instructions); // receipt instructions
 
     console.log(`recipeID: ${recipeID}`);
   }).catch(function (error) {
@@ -113,8 +124,12 @@ const recipePage = () => {
 
   $('#recipe-servings').on('change', () => {
     let servingsWanted = _.parseInt($('#recipe-servings').val()),
-        servingsCoef = _.parseInt(servingsWanted)/_.parseInt(cachedServingSize),
+        servingsCoef = _.parseInt(servingsWanted)/cachedServingSize,
         ingredients = '';
+
+    console.log(`cachedServingSize = ${cachedServingSize}`);    
+    console.log(`servingsWanted = ${servingsWanted}`);
+    console.log(`servingsCoef = ${servingsCoef}`);
 
     if (isNaN(servingsCoef))
       return;
@@ -122,7 +137,9 @@ const recipePage = () => {
     _.forEach(cachedIngredients, ingredient => {
       // DEBUG:
       // console.log(ingredient);
-      ingredients += `<li>${ math.round((servingsCoef * _.parseInt(ingredient.amount)), 2) } ${_.toLower(ingredient.unit)} 
+      console.log(`ingredient.amount = ${math.number(ingredient.amount)}`);
+      
+      ingredients += `<li>${ math.round((servingsCoef * math.number(ingredient.amount)), 2) } ${_.toLower(ingredient.unit)} 
         ${ingredient.name}</li>`;
     });
 
