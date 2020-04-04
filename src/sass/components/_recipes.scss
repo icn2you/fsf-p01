@@ -10,9 +10,17 @@
     .img-container {
         width: 40%;
         position: relative;
+        overflow: hidden;
 
         img {
-            max-width: 100%;
+            width: auto;
+            border-radius: 2px 0 0 2px;
+            height: 100%;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            position: absolute;
+            z-index: 1;
         }
 
         .cooking-time {
@@ -52,6 +60,10 @@
     .summary {
         height: 8rem;
         overflow-y: scroll;
+
+        @media only screen and (max-width: $bp-small) {
+            height: 4.5rem;
+        }
     }
 
     .health-score {

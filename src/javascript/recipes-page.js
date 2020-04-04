@@ -55,7 +55,7 @@ const renderRecipesList = () => {
 
         const recipeItemHtml = `
           <div class="card horizontal small">
-            <div class="card-image img-container">
+            <div class="img-container">
                 <img src="${result.image}" alt="${result.title}">
                 <span class="cooking-time">${result.readyInMinutes}min</span>
             </div>
