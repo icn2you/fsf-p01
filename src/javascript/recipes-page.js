@@ -15,8 +15,10 @@ import { SPOONACULAR_API_KEY } from '../../config/keys';
 
 const queryString = require('query-string');
 
-const renderRecipesList = () => {
-  const queryURL = buildRecipesQueryURL();
+let offset = 0;
+
+const renderRecipesList = (offset) => {
+  const queryURL = buildRecipesQueryURL(offset);
   console.log(queryURL);
   const recipeIDs = [];
 
@@ -32,18 +34,14 @@ const renderRecipesList = () => {
     const results = response.results;
     console.log(results);
 
+    if (results.length < 20) {
+      $('#show-more').remove();
+    }
+
     const dietTypeEls = (diets) => {
       let html = '';
       _.forEach(diets, (diet) => {
         html += `<span class="waves-effect waves-light btn-small">${diet}</span>`;
-      });
-      return html;
-    };
-
-    const intolerancesEls = (intolerances) => {
-      let html = '';
-      _.forEach(intolerances, (intolerance) => {
-        html += `<span class="waves-effect waves-light btn-small">${intolerance}</span>`;
       });
       return html;
     };
@@ -90,7 +88,7 @@ const renderRecipesList = () => {
 
 };
 
-const buildRecipesQueryURL = () => {
+const buildRecipesQueryURL = (offset) => {
   const searchObj = createSearchObj();
   console.log(searchObj);
 
@@ -101,11 +99,11 @@ const buildRecipesQueryURL = () => {
   console.log('intolerances: ' + intolerances);
   const ingredients = _.join(searchObj.ingredients, ',');
   console.log('ingredients: ' + ingredients);
-  const number = 5;
+  const number = 20;
 // https://spoonacular.com/food-api/docs#Recipe-Sorting-Options
   const sort = 'popularity';
 
-  const queryURL = `${recipeURL}complexSearch?diet=${diet}&intolerances=${intolerances}&includeIngredients=${ingredients}&instructionsRequired=true&addRecipeInformation=true&sort=${sort}&number=${number}&limitLicense=true`;
+  const queryURL = `${recipeURL}complexSearch?diet=${diet}&intolerances=${intolerances}&includeIngredients=${ingredients}&instructionsRequired=true&addRecipeInformation=true&sort=${sort}&number=${number}&limitLicense=true&offset=${offset}`;
   console.log(queryURL);
   return queryURL;
 };
@@ -134,7 +132,12 @@ const createSearchObj = () => {
 const recipesPage = () => {
   console.log('recipes page!!');
   renderSearchCriteria();
-  renderRecipesList();
+  renderRecipesList(0);
+
+  $('#show-more').on('click', () => {
+    offset += 20;
+    renderRecipesList(offset);
+  });
 };
 
 export default recipesPage;
