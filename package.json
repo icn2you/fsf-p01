@@ -13,7 +13,7 @@
     "url": "git@github.com-user2:icn2you/fsf-proj-01.git"
   },
   "keywords": [],
-  "author": "Christopher B. Zenner, Yuko Uda, Brittany Davis",
+  "author": "Yuko Uda, Brittany Davis, Christopher Zenner",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -37,6 +37,7 @@
     "jquery": "^3.4.1",
     "lodash": "^4.17.15",
     "materialize-css": "^1.0.0-rc.2",
+    "mathjs": "^6.6.2",
     "query-string": "^6.11.1"
   }
 }
