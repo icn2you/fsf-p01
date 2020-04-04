@@ -1,13 +1,21 @@
 import $ from 'jquery';
 import _ from 'lodash';
 import 'materialize-css';
-
 import { SPOONACULAR_API_KEY, YOUTUBE_API_KEY } from '../../config/keys';
+
+const queryString = require('query-string');
+
+const getRecipeID = () => {
+  console.log(location.search);
+  const parsed = queryString.parse(`${location.search}`);
+  console.log(parsed);
+  return parsed.id;
+};
 
 const recipePage = () => {
   // ********** Variables for QueryURLs **********
   const recipeURL = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/';
-  const recipeID = '663323';
+  const recipeID = getRecipeID();
 
   // ********** QueryURL **********
   // https://spoonacular.com/food-api/docs#Get-Recipe-Information
@@ -21,11 +29,17 @@ const recipePage = () => {
       "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
       "x-rapidapi-key": SPOONACULAR_API_KEY
     },
-  })
+  });
+
+  let cachedServingSize = 0,
+      cachedIngredients;
 
   recipePromise.then((response) => {
     console.log('ajax1 | successful!!!!');
     console.log(response);
+
+    cachedIngredients = response.extendedIngredients;
+    cachedServingSize = response.servings;
 
     // unused recipe elements
     // _.forEach(response.diets, diet => {
@@ -33,10 +47,10 @@ const recipePage = () => {
     // });
     
     $('#recipe-title').text(response.title); // recipe title
-    $('#recipe-time').text(response.readyInMinutes); // recipe prep time
+    $('#recipe-time').append(`${response.readyInMinutes} min.`); // recipe prep time
     $('#recipe-img').attr('src', response.image); // recipe image
-    $('#no-servings > option[val="options"]').attr({ 'selected': false });
-    $(`#no-servings > option[val="${response.servings}"]`).attr({ 
+    $('#recipe-servings > option[value="choose"]').attr({ 'selected': false });
+    $(`#recipe-servings > option[value="${response.servings}"]`).attr({ 
       'disabled' : true,
       'selected' : true 
     });
@@ -93,6 +107,27 @@ const recipePage = () => {
       console.log("Error searching: ", error)
     })
   });
-}
+
+  // Initialize Materialize form select.
+  $('select').formSelect();
+
+  $('#recipe-servings').on('change', () => {
+    let servingsWanted = _.parseInt($('#recipe-servings').val()),
+        servingsCoef = _.parseInt(servingsWanted)/_.parseInt(cachedServingSize),
+        ingredients = '';
+
+    if (isNaN(servingsCoef))
+      return;
+
+    _.forEach(cachedIngredients, ingredient => {
+      // DEBUG:
+      // console.log(ingredient);
+      ingredients += `<li>${ math.round((servingsCoef * _.parseInt(ingredient.amount)), 2) } ${_.toLower(ingredient.unit)} 
+        ${ingredient.name}</li>`;
+    });
+
+    $('#recipe-ingredients').html(ingredients);
+  });
+};
 
 export default recipePage;
