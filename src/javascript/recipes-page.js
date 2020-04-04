@@ -32,6 +32,52 @@ const renderRecipesList = () => {
     const results = response.results;
     console.log(results);
 
+    const dietTypeEls = (diets) => {
+      let html = '';
+      _.forEach(diets, (diet) => {
+        html += `<span class="waves-effect waves-light btn-small">${diet}</span>`;
+      });
+      return html;
+    };
+
+    const intolerancesEls = (intolerances) => {
+      let html = '';
+      _.forEach(intolerances, (intolerance) => {
+        html += `<span class="waves-effect waves-light btn-small">${intolerance}</span>`;
+      });
+      return html;
+    };
+
+    results.forEach(function(result) {
+      // Render only recipes whose cooking time is equal to or less than 45 mins
+      if (result.readyInMinutes <= 45) {
+        recipeIDs.push(result.id);
+
+        const recipeItemHtml = `
+          <div class="card horizontal small">
+            <div class="card-image">
+                <img src="${result.image}" alt="${result.title}">
+                <span>${result.readyInMinutes}min</span>
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <h5>${result.title}</h5>
+                    ${dietTypeEls(result.diets)}
+                    <p>${result.summary}</p>
+                </div>
+                <div class="card-action">
+                    <i class="material-icons left">grade</i>
+                    <span>Health Score: </span>
+                    <span>${result.healthScore}</span>
+                </div>
+            </div>
+        </div>
+        `;
+
+        $('#recipes-list').append(recipeItemHtml);
+      }
+    });
+
   }).catch(function (error) {
     console.log(`${error.status} ${error.statusText.toUpperCase()}`);
   });
@@ -49,7 +95,7 @@ const buildRecipesQueryURL = () => {
   console.log('intolerances: ' + intolerances);
   const ingredients = _.join(searchObj.ingredients, ',');
   console.log('ingredients: ' + ingredients);
-  const number = 50;
+  const number = 5;
 // https://spoonacular.com/food-api/docs#Recipe-Sorting-Options
   const sort = 'popularity';
 
