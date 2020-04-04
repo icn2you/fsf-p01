@@ -5,3 +5,57 @@
         text-transform: capitalize;
     }
 }
+
+#recipes-list {
+    .img-container {
+        width: 40%;
+        position: relative;
+
+        img {
+            max-width: 100%;
+        }
+
+        .cooking-time {
+            padding: .3rem .5rem;
+            position: absolute;
+            top: .5rem;
+            left: .5rem;
+            z-index: 10;
+            display: inline-block;
+            color: $color-white;
+            background: $color-secondary;
+            border-radius: 3px;
+            line-height: 1;
+        }
+    }
+
+    .recipe-title {
+        margin: 0 0 .5rem;
+    }
+
+    .diet-types-container {
+        span {
+            margin-bottom: .5rem;
+            padding: .5rem;
+            font-size: .8rem;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+            height: 1.6rem;
+
+            &:not(:last-child) {
+                margin-right: .5rem;
+            }
+        }
+    }
+
+    .summary {
+        height: 8rem;
+        overflow-y: scroll;
+    }
+
+    .health-score {
+        color: $color-tertiary;
+        font-weight: bold;
+    }
+}
