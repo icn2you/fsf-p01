@@ -62,7 +62,7 @@
                 </div>
                 <div class="row">
                     <div class="col s6">
-                        <img id="recipe-img" src="https://via.placeholder.com/400">
+                        <!--<img id="recipe-img" src="https://via.placeholder.com/400">-->
                     </div>
                     <div class="col s6">
                         <div class="row valign-wrapper">
@@ -85,9 +85,16 @@
                                 <label>Select Serving Size</label>
                             </div>
                             <div class="col s7 right-align">
-                                <h6 id="recipe-time">Cooking Time: 10 min.</h6>
+                                <h6 id="recipe-time">Cooking Time: </h6>
                             </div>
                         </div>
+                    </div>
+                </div>      
+                <div class="row valign-wrapper">
+                    <div class="col s6">
+                        <img id="recipe-img" src="https://via.placeholder.com/400">
+                    </div>
+                    <div class="col s6">
                         <div class="row">
                             <div class="col s12">
                                 <div class="card horizontal">
@@ -99,36 +106,40 @@
                                     </div>
                                 </div>
                             </div>            
-                        </div>
-                    </div>
-                </div>               
+                        </div>              
+                    </div>               
+                </div>
             </div>
-            <div class="col s12">
-                <div class="card-panel teal lighten-1">
-                    <div class="white-text">
-                        <ul id="recipe-summary"></ul>
+            <div class="divider"></div>
+            <div class="section">
+                <div class="col s12">
+                    <div class="card-panel teal lighten-1">
+                        <div class="white-text">
+                            <div id="recipe-summary"></div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="section">
-                <div class="col s12 m7">
+                <div class="col s12">
                     <div class="card horizontal">
                         <div class="card-stacked">
-                            <div id="recipe-instructions" class="card-content">
+                            <div class="card-content">
                                 <span class="card-title">Instructions</span>
-                                <ol>
-                                    <li>Lorem ipsum dolor sit, amet consectetur.</li>
-                                    <li>Adipisicing elit. Placeat adipisci fugit.</li>
-                                    <li>Autem libero doloribus aliquam voluptates.</li> 
-                                    <li>Deserunt cumque, hic eligendi omnis explicabo modi.</li>
-                                    <li>Repudiandae quam impedit! Perferendis doloremque atque ipsa.</li>
-                                </ol>
+                                <div id="recipe-instructions"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="videos"></div>
+            <div class="divider"></div>
+            <div class="section"> 
+                <div class="row">
+                    <div class="col s12">
+                        <div id="videos"></div>
+                    </div>
+                </div>
+            </div>
         </main>
 
         <!-- Footer -->
@@ -136,6 +147,9 @@
 
         <!-- YouTube API Script -->
         <script src="https://apis.google.com/js/api.js"></script>
+
+        <!-- Math.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.6.2/math.min.js"></script>
 
         <!-- Recipes Script -->
         <script src="assets/javascript/bundle.js"></script>
