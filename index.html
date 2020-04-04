@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-page="landing-page">
 
     <!--=============================== HEAD ===============================-->  
     <head>
@@ -19,7 +19,7 @@
         <!-- Materialize -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <!-- Site-specific Styles -->
-        <link rel="stylesheet" href="src/css/style.css">
+        <link rel="stylesheet" href="assets/css/style.css">
 
         <title>Simple & Delicious</title>
     </head>
@@ -110,16 +110,16 @@
             </div>
             <div class="divider"></div>
             <div class="section center-align">
-                <a class="waves-effect waves-light btn-large"><i class="material-icons left">search</i>Search for Recipes</a>
+                <a id="search-btn" class="waves-effect waves-light btn-large"><i class="material-icons left">search</i>Search for Recipes</a>
             </div>
             <div class="divider"></div>
             <div class="section">
                 <h5>Recipes to Browse</h5>
-                <div class="carousel carousel-slider">
-                    <a class="carousel-item" href="#one!"><img src="https://via.placeholder.com/800/400"></a>
-                    <a class="carousel-item" href="#two!"><img src="https://via.placeholder.com/800/400"></a>
-                    <a class="carousel-item" href="#three!"><img src="https://via.placeholder.com/800/400"></a>
-                    <a class="carousel-item" href="#four!"><img src="https://via.placeholder.com/800/400"></a>
+                <div id="random-recipes" class="carousel carousel-slider">
+<!--                    <a class="carousel-item" href="#one!"><img src="https://via.placeholder.com/800/400"></a>-->
+<!--                    <a class="carousel-item" href="#two!"><img src="https://via.placeholder.com/800/400"></a>-->
+<!--                    <a class="carousel-item" href="#three!"><img src="https://via.placeholder.com/800/400"></a>-->
+<!--                    <a class="carousel-item" href="#four!"><img src="https://via.placeholder.com/800/400"></a>-->
                 </div>
             </div>
         </main>
