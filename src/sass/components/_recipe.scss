@@ -16,13 +16,37 @@ This CSS specifies the layout and styling for the recipe detail page.
 .debug-border-pur { border: 1px solid purple !important; }
 
 /******************************************************************************
+ Anchor Elements
+*******************************************************************************/
+#recipe-summary a {
+  color: #FFCDD2;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  vertical-align: bottom;
+}
+
+#recipe-summary a:active,
+#recipe-summary a:hover {
+  text-decoration: underline;
+}
+
+/******************************************************************************
  Primary Content Elements (Main)
 *******************************************************************************/
-#recipe-title {
-  border: 1px solid orange;
+.row {
+  margin-bottom: 0 !important;
 }
 
 #recipe-img {
-  border: 1px solid red !important;
   max-width: 400px;
+}
+
+#recipe-servings {
+  border: 1px solid red;
+}
+
+iframe {
+  display: block;
+  margin: 1rem auto;
 }
