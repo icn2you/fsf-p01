@@ -56,12 +56,16 @@ const renderRecipesList = () => {
         const recipeItemHtml = `
           <div class="card horizontal small">
             <div class="img-container">
+                <a href="recipe.html?id=${result.id}" target="_blank" rel="noopener">
                 <img src="${result.image}" alt="${result.title}">
-                <span class="cooking-time">${result.readyInMinutes}min</span>
+              </a>
+              <span class="cooking-time">${result.readyInMinutes}min</span>
             </div>
             <div class="card-stacked">
                 <div class="card-content">
-                    <h5 class="recipe-title">${result.title}</h5>
+                    <h5 class="recipe-title">
+                        <a href="recipe.html?id=${result.id}" target="_blank" rel="noopener">${result.title}</a>
+                    </h5>
                     <div class="diet-types-container">
                         ${dietTypeEls(result.diets)}
                     </div>

@@ -39,6 +39,16 @@
 
     .recipe-title {
         margin: 0 0 .5rem;
+
+        a {
+            color: $color-black;
+            text-decoration: underline;
+        }
+
+        a:hover,
+        a:focus {
+            color: $color-grey;
+        }
     }
 
     .diet-types-container {
