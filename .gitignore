@@ -40,3 +40,6 @@ Temporary Items
 *.iml
 out
 gen
+
+# VSCode files
+.vscode
