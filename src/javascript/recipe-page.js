@@ -5,26 +5,22 @@ import { SPOONACULAR_API_KEY, YOUTUBE_API_KEY } from '../../config/keys';
 
 const queryString = require('query-string');
 
-const createSearchObj = () => {
+const getRecipeID = () => {
   console.log(location.search);
-  const parsed = queryString.parse(location.search);
+  const parsed = queryString.parse(`${location.search}`);
   console.log(parsed);
-  // return JSON.parse(parsed);
+  return parsed.id;
 };
 
 const recipePage = () => {
   // ********** Variables for QueryURLs **********
   const recipeURL = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/';
-  const recipeID = '663323';
+  const recipeID = getRecipeID();
 
   // ********** QueryURL **********
   // https://spoonacular.com/food-api/docs#Get-Recipe-Information
   // https://api.spoonacular.com/recipes/:id/information?apiKey=###&includeNutrition=false
   const queryURL = `${recipeURL}${recipeID}/information`;
-
-  // const searchObj = createSearchObj();
-
-  // console.log(`${searchObj.id}`);
 
   var recipePromise = $.ajax({
     url: queryURL,
@@ -33,7 +29,7 @@ const recipePage = () => {
       "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
       "x-rapidapi-key": SPOONACULAR_API_KEY
     },
-  })
+  });
 
   let cachedServingSize = 0,
       cachedIngredients;
