@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import _ from 'lodash';
 import 'materialize-css';
+import { number, round } from 'mathjs';
 import { SPOONACULAR_API_KEY, YOUTUBE_API_KEY } from '../../config/keys';
 
 const queryString = require('query-string');
@@ -41,13 +42,12 @@ const recipePage = () => {
     cachedIngredients = response.extendedIngredients;
     cachedServingSize = _.parseInt(response.servings);
 
-    // unused recipe elements
+    // Unused recipe element:
     // _.forEach(response.diets, diet => {
     //   dietOpts += `<option value="${_.toLower(val)}">${val}</option>`;
     // });
 
-    // Dynamically create options for serving size & 
-    // initialize Material form `select` element.
+    // Dynamically create options for serving size.
     let opts = '';
     
     for (let i = 1; i < 21; i++) {
@@ -55,6 +55,8 @@ const recipePage = () => {
     }
 
     $("#recipe-servings").append(opts);
+
+    // Initialize Material form `select` element.
     $('select').formSelect();
 
     $('#recipe-title').text(response.title); // recipe title
@@ -66,10 +68,13 @@ const recipePage = () => {
       'selected' : true 
     });
 
+    // Reinitialize Material form `select` element.
+    $('select').formSelect();
+
     let ingredients = '';
 
     _.forEach(response.extendedIngredients, ingredient => {
-      ingredients += `<li>${ingredient.amount} ${_.toLower(ingredient.unit)} 
+      ingredients += `<li>${round(number(ingredient.amount), 2)} ${_.toLower(ingredient.unit)} 
         ${ingredient.name}</li>`;
     });
 
@@ -119,9 +124,6 @@ const recipePage = () => {
     })
   });
 
-  // Initialize Materialize form select.
-  $('select').formSelect();
-
   $('#recipe-servings').on('change', () => {
     let servingsWanted = _.parseInt($('#recipe-servings').val()),
         servingsCoef = _.parseInt(servingsWanted)/cachedServingSize,
@@ -135,11 +137,9 @@ const recipePage = () => {
       return;
 
     _.forEach(cachedIngredients, ingredient => {
-      // DEBUG:
-      // console.log(ingredient);
-      console.log(`ingredient.amount = ${math.number(ingredient.amount)}`);
+      console.log(`ingredient.amount = ${number(ingredient.amount)}`);
       
-      ingredients += `<li>${ math.round((servingsCoef * math.number(ingredient.amount)), 2) } ${_.toLower(ingredient.unit)} 
+      ingredients += `<li>${ round((servingsCoef * number(ingredient.amount)), 2) } ${_.toLower(ingredient.unit)} 
         ${ingredient.name}</li>`;
     });
 
