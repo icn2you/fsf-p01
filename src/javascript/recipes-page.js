@@ -52,14 +52,14 @@ const renderRecipesList = (offset) => {
         recipeIDs.push(result.id);
 
         const recipeItemHtml = `
-          <div class="card horizontal small">
-            <div class="img-container">
+          <div class="card recipes-card">
+            <div class="recipes-img__container">
                 <a href="recipe.html?id=${result.id}" target="_blank" rel="noopener">
                 <img src="${result.image}" alt="${result.title}">
               </a>
-              <span class="cooking-time">${result.readyInMinutes}min</span>
+              <span class="recipes-cooking-time">${result.readyInMinutes}min</span>
             </div>
-            <div class="card-stacked">
+            <div class="recipes-description">
                 <div class="card-content">
                     <h5 class="recipe-title">
                         <a href="recipe.html?id=${result.id}" target="_blank" rel="noopener">${result.title}</a>

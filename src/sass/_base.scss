@@ -20,6 +20,32 @@ $bp-small: 40em;    // 640px;
 $bp-smallest: 33.75em;    // 540px;
 
 
+/* Debug */
+.debug-border-red {
+    border: 1px solid red !important;
+}
+
+.debug-border-org {
+    border: 1px solid orange !important;
+}
+
+.debug-border-ylw {
+    border: 1px solid yellow !important;
+}
+
+.debug-border-grn {
+    border: 1px solid green !important;
+}
+
+.debug-border-blu {
+    border: 1px solid blue !important;
+}
+
+.debug-border-pur {
+    border: 1px solid purple !important;
+}
+
+
 //*,
 //*::before,
 //*::after {

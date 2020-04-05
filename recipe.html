@@ -33,7 +33,7 @@
                 <nav>
                     <div class="nav-wrapper">
                         <a href="index.html" class="brand-logo">&nbsp;CookQuik</a>
-                        <form>
+                        <form id="nav-search">
                             <div class="input-field right">
                                 <input id="search" type="search" required>
                                 <label class="label-icon" for="search"><i class="material-icons">search</i></label>
@@ -55,46 +55,26 @@
             </div>
             <div class="divider"></div>
             <div class="section">
-                <div class="row">
-                    <div class="col s12">
-                        <h4 id="recipe-title">Recipe Title</h4>
+                <h4 id="recipe-title">Recipe Title</h4>
+                <div id="size-time__container">
+                    <div>
+                        <h6 id="recipe-time">Cooking Time: </h6>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 m6">
-                    </div>
-                    <div class="col s12 m6">
-                        <div class="row valign-wrapper">
-                            <div class="input-field col s5">
-                                <select id="recipe-servings">
-                                    <!--<option value="choose" disabled selected>Choose your option</option>-->
-                                </select>
-                                <label>Select Serving Size</label>
-                            </div>
-                            <div class="col s7 right-align">
-                                <h6 id="recipe-time">Cooking Time: </h6>
-                            </div>
-                        </div>
+                    <div class="input-field size-input">
+                        <select id="recipe-servings">
+                            <!--<option value="choose" disabled selected>Choose your option</option>-->
+                        </select>
+                        <label>Select Serving Size</label>
                     </div>
                 </div>      
-                <div class="row valign-wrapper">
-                    <div class="col s12 m6 center-align">
+                <div id="recipe-img-ingredients__container">
+                    <div class="recipe-img__container">
                         <img id="recipe-img" src="https://via.placeholder.com/400">
                     </div>
-                    <div class="col s12 m6">
-                        <div class="row">
-                            <div class="col s12">
-                                <div class="card horizontal">
-                                    <div class="card-stacked">
-                                        <div class="card-content">
-                                            <span class="card-title">Ingredients</span>
-                                            <ul id="recipe-ingredients"></ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>            
-                        </div>              
-                    </div>               
+                    <div class="recipe-ingredients__container">
+                        <h6 class="recipe-ingredients__title">Ingredients</h6>
+                        <ul id="recipe-ingredients"></ul>
+                    </div>
                 </div>
             </div>
             <div class="divider"></div>

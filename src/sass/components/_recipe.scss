@@ -7,46 +7,115 @@ Ver.:  0.1.0 20200403
 This CSS specifies the layout and styling for the recipe detail page.
 *******************************************************************************/
 
-/* Debug */
-.debug-border-red { border: 1px solid red !important; }
-.debug-border-org { border: 1px solid orange !important; }
-.debug-border-ylw { border: 1px solid yellow !important; }
-.debug-border-grn { border: 1px solid green !important; }
-.debug-border-blu { border: 1px solid blue !important; }
-.debug-border-pur { border: 1px solid purple !important; }
-
 /******************************************************************************
  Anchor Elements
 *******************************************************************************/
 #recipe-summary a {
-  color: #FFCDD2;
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: 600;
-  vertical-align: bottom;
+    color: #FFCDD2;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    vertical-align: bottom;
 }
 
 #recipe-summary a:active,
 #recipe-summary a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 /******************************************************************************
  Primary Content Elements (Main)
 *******************************************************************************/
 .row {
-  margin-bottom: 0 !important;
+    margin-bottom: 0 !important;
 }
 
-#recipe-img {
-  max-width: 400px;
+#recipe-title {
+    @media only screen and (max-width: $bp-small) {
+        font-size: 2rem;
+    }
 }
 
-#recipe-servings {
-  border: 1px solid red;
+#size-time__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    #recipe-time {
+        font-size: 1.2rem;
+
+        @media only screen and (max-width: $bp-small) {
+            font-size: 1rem;
+        }
+    }
+
+    .size-input {
+        max-width: 15rem;
+
+        @media only screen and (max-width: $bp-small) {
+            max-width: 8rem;
+        }
+    }
+
+    #recipe-servings {
+        border: 1px solid red;
+    }
+}
+
+#recipe-img-ingredients__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media only screen and (max-width: $bp-medium) {
+        flex-direction: column;
+    }
+
+    .recipe-img__container {
+        width: 48%;
+        display: flex;
+        justify-content: center;
+
+        @media only screen and (max-width: $bp-medium) {
+            width: 100%;
+        }
+
+
+        #recipe-img {
+          max-width: 100%;
+          display: flex;
+          align-items: center;
+        }
+    }
+
+    .recipe-ingredients__container {
+        width: 48%;
+        padding: 0 1rem;
+
+        background: $color-white;
+        transition: box-shadow .25s;
+        border-radius: 2px;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+
+        @media only screen and (max-width: $bp-medium) {
+            width: 100%;
+            padding: 1rem 2rem;
+        }
+
+        .recipe-ingredients__title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        #recipe-ingredients li {
+            line-height: 2;
+        }
+    }
+
+
 }
 
 iframe {
-  display: block;
-  margin: 1rem auto;
+    display: block;
+    margin: 1rem auto;
 }
