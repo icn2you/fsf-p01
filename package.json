@@ -34,7 +34,7 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "lodash": "^4.17.15",
     "materialize-css": "^1.0.0-rc.2",
     "mathjs": "^6.6.2",
